@@ -7,14 +7,99 @@
 //
 
 #import "AppDelegate.h"
+#import "iToast.h"
+#import "Reachability.h"
 
 @implementation AppDelegate
 
 @synthesize window = _window;
 
+- (void) configureTextField: (Reachability*) curReach
+{
+    NetworkStatus netStatus = [curReach currentReachabilityStatus];
+    BOOL connectionRequired= [curReach connectionRequired];
+    NSString* statusString= @"";
+    switch (netStatus)
+    {
+        case NotReachable:
+        {
+            statusString = @"检测不到网络";
+
+            connectionRequired= NO;  
+            
+            [[[iToast makeText:statusString] setDuration:10000] show];
+            break;
+        }
+            
+        case ReachableViaWWAN:
+        {
+            statusString = @"Reachable WWAN";
+            break;
+        }
+        case ReachableViaWiFi:
+        {
+            statusString= @"Reachable WiFi";
+            break;
+        }
+    }
+    if(connectionRequired)
+    {
+        statusString= [NSString stringWithFormat: @"%@, Connection Required", statusString];
+    }
+}
+
+- (void) updateInterfaceWithReachability: (Reachability*) curReach
+{
+    if(curReach == hostReach)
+	{
+		[self configureTextField: curReach];
+        BOOL connectionRequired= [curReach connectionRequired];
+        
+        NSString* baseLabel=  @"";
+        if(connectionRequired)
+        {
+            baseLabel=  @"Cellular data network is available.\n  Internet traffic will be routed through it after a connection is established.";
+        }
+        else
+        {
+            baseLabel=  @"Cellular data network is active.\n  Internet traffic will be routed through it.";
+        }
+    }
+	if(curReach == internetReach)
+	{	
+		[self configureTextField: curReach];
+	}
+	if(curReach == wifiReach)
+	{	
+		[self configureTextField: curReach];
+	}
+	
+}
+
+//Called by Reachability whenever status changes.
+- (void) reachabilityChanged: (NSNotification* )note
+{
+	Reachability* curReach = [note object];
+	NSParameterAssert([curReach isKindOfClass: [Reachability class]]);
+	[self updateInterfaceWithReachability: curReach];
+}
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.
+    [[NSNotificationCenter defaultCenter] addObserver: self selector: @selector(reachabilityChanged:) name: kReachabilityChangedNotification object: nil];
+    
+	hostReach = [Reachability reachabilityWithHostName: @"http://192.168.3.104/"];
+	[hostReach startNotifier];
+	[self updateInterfaceWithReachability: hostReach];
+	
+    internetReach = [Reachability reachabilityForInternetConnection];
+	[internetReach startNotifier];
+	[self updateInterfaceWithReachability: internetReach];
+    
+    wifiReach = [Reachability reachabilityForLocalWiFi];
+	[wifiReach startNotifier];
+	[self updateInterfaceWithReachability: wifiReach];
+    
     return YES;
 }
 							

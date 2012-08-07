@@ -8,6 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
+@interface ViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>{
+    IBOutlet UINavigationBar *navBar;
+    IBOutlet UITableView *mTableView;
+    UILabel *hotelName;
+    NSArray *hotelArr;
+    UILabel *sd;
+}
+
+@property (nonatomic, strong) IBOutlet UITableView *mTableView;
+@property (nonatomic, strong) NSArray *hotelArr;
 
 @end
