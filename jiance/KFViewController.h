@@ -11,14 +11,17 @@
 #import "SOAPXMlParse.h"
 #import "MBProgressHUD.h"
 
-@interface KFViewController : UIViewController{
+@interface KFViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>{
 
     NSString *hid;
     NSString *stodate;
     NSString *etodate;
     UINavigationBar *nav;
     UIDatePicker *dp;
+    NSArray* tempArr;
 }
+
+@property(nonatomic, retain) IBOutlet UITableView *tView;
 
 @property(nonatomic,retain) IBOutlet UITextView *roomInfo;
 

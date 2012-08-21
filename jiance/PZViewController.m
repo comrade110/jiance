@@ -62,6 +62,7 @@
     
     NSString *result = (NSString*)value;
     
+    
     CXMLDocument *document = [[CXMLDocument alloc] initWithXMLString:result options:0 error:nil];
     
     SOAPXMlParse *sxp = [[SOAPXMlParse alloc] init];
@@ -69,7 +70,7 @@
     NSArray* tempArr = [sxp parseDire:document nodeName:@"//hotel"];
     
     NSDictionary *tempDic = [[tempArr objectAtIndex:0] objectForKey:@"hotel"];
-    
+
     
     label1.text = [tempDic objectForKey:@"hid"];
     label2.text = [tempDic objectForKey:@"name"];
@@ -82,6 +83,7 @@
     label9.text = [tempDic objectForKey:@"homepage"];
     
     NSDictionary *tempDic2 = [[tempArr objectAtIndex:0] objectForKey:@"machine"];
+
     
     label10.text = [tempDic2 objectForKey:@"name"];
     label11.text = [tempDic2 objectForKey:@"vnc"];
@@ -98,22 +100,40 @@
     label16.text = [tempDic2 objectForKey:@"cpu"];
     label17.text = [tempDic2 objectForKey:@"mac"];
     
-    NSArray *tempArr3 = [[tempArr objectAtIndex:0] objectForKey:@"alert"];
-    
     NSString *clText = @"";
     
-    for (int i = 0; i<[tempArr3 count]; i++) {
-        NSDictionary *tempDic3 = [tempArr3 objectAtIndex:i];
-        NSString *alertid = [tempDic3 objectForKey:@"alertid"];
-        NSString *name = [tempDic3 objectForKey:@"name"];
-        NSString *note = [tempDic3 objectForKey:@"note"];
+    if ([[[tempArr objectAtIndex:0] objectForKey:@"alert"] isKindOfClass:[NSArray class]] ){
+    
+        
+        NSArray *tempArr3 = [[tempArr objectAtIndex:0] objectForKey:@"alert"];
+        for (int i = 0; i<[tempArr3 count]; i++) {
+            NSDictionary *tempDic3 = [tempArr3 objectAtIndex:i];
+            
+            NSString *alertid = [tempDic3 objectForKey:@"alertid"];
+            NSString *name = [tempDic3 objectForKey:@"name"];
+            NSString *note = [tempDic3 objectForKey:@"note"];
+            
+            NSString *celue = [NSString stringWithFormat:@"策略%@\n策略名称：%@\n报警描述%@\n\n ------------",alertid,name,note];
+            
+            clText = [NSString stringWithFormat:@"%@\n%@\n",clText,celue];
+            
+            
+        }
+    }else {
+        NSDictionary *tempD = [[tempArr objectAtIndex:0] objectForKey:@"alert"];
+        NSString *alertid = [tempD objectForKey:@"alertid"];
+        NSString *name = [tempD objectForKey:@"name"];
+        NSString *note = [tempD objectForKey:@"note"];
         
         NSString *celue = [NSString stringWithFormat:@"策略%@\n策略名称：%@\n报警描述%@\n\n ------------",alertid,name,note];
         
         clText = [NSString stringWithFormat:@"%@\n%@\n",clText,celue];
-        
-
     }
+    
+
+    
+
+
     if(clText == nil){
         
         textView.text = @"暂无策略";

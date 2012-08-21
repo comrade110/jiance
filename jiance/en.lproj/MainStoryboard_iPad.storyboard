@@ -245,19 +245,45 @@
         </class>
         <class className="JBViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/JBViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="logWV" candidateClass="UIWebView"/>
+            </relationships>
         </class>
         <class className="JCTabBarController" superclassName="UITabBarController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/JCTabBarController.h"/>
         </class>
         <class className="JKViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/JKViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="reflashData:"/>
+                <relationship kind="outlet" name="cpu" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="disk" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="myTitle" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="nis" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="usemen" candidateClass="UILabel"/>
+            </relationships>
         </class>
         <class className="KFViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/KFViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="endTimeBtnPress:"/>
+                <relationship kind="action" name="resetTime:"/>
+                <relationship kind="action" name="searchKFData:"/>
+                <relationship kind="action" name="startTimeBtnPress:"/>
+                <relationship kind="outlet" name="endBtn" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="endTime" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="resetBtn" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="roomInfo" candidateClass="UITextView"/>
+                <relationship kind="outlet" name="searchBtn" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="startBtn" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="startTime" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="tView" candidateClass="UITableView"/>
+            </relationships>
         </class>
         <class className="LoginViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/LoginViewController.h"/>
             <relationships>
+                <relationship kind="action" name="getVerifyCode:"/>
                 <relationship kind="action" name="loginPress:"/>
                 <relationship kind="outlet" name="loginBtn" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="pwField" candidateClass="UITextField"/>
@@ -266,6 +292,28 @@
         </class>
         <class className="PZViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/PZViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="label1" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="label10" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="label11" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="label12" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="label13" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="label14" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="label15" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="label16" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="label17" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="label2" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="label3" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="label4" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="label5" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="label6" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="label7" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="label8" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="label9" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="sview" candidateClass="UIScrollView"/>
+                <relationship kind="outlet" name="textView" candidateClass="UITextView"/>
+                <relationship kind="outlet" name="view1" candidateClass="UIView"/>
+            </relationships>
         </class>
         <class className="ViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ViewController.h"/>

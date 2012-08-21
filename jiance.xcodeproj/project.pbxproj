@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CE1B0A8915DCC5EA00CE694F /* 000.png in Resources */ = {isa = PBXBuildFile; fileRef = CE1B0A8815DCC5EA00CE694F /* 000.png */; };
+		CE1B0A8B15DCC5F000CE694F /* 003.png in Resources */ = {isa = PBXBuildFile; fileRef = CE1B0A8A15DCC5F000CE694F /* 003.png */; };
 		CE77F8B015C77B84003EB900 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE77F8AF15C77B84003EB900 /* UIKit.framework */; };
 		CE77F8B215C77B84003EB900 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE77F8B115C77B84003EB900 /* Foundation.framework */; };
 		CE77F8B415C77B84003EB900 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE77F8B315C77B84003EB900 /* CoreGraphics.framework */; };
@@ -17,6 +19,7 @@
 		CE77F8C615C77B84003EB900 /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE77F8C415C77B84003EB900 /* MainStoryboard_iPad.storyboard */; };
 		CE77F8C915C77B84003EB900 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE77F8C815C77B84003EB900 /* ViewController.m */; };
 		CE77F8D415C7817C003EB900 /* areabtn.png in Resources */ = {isa = PBXBuildFile; fileRef = CE77F8D315C7817C003EB900 /* areabtn.png */; };
+		CE79BC1015DBAAC6008EA2C4 /* jingbao.png in Resources */ = {isa = PBXBuildFile; fileRef = CE79BC0F15DBAAC6008EA2C4 /* jingbao.png */; };
 		CE7AC71215D0F69E0093B16A /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = CE7AC71115D0F69E0093B16A /* MBProgressHUD.m */; };
 		CE7AC71A15D1045D0093B16A /* Icon-Small.png in Resources */ = {isa = PBXBuildFile; fileRef = CE7AC71415D1045D0093B16A /* Icon-Small.png */; };
 		CE7AC71B15D1045D0093B16A /* Icon-Small-50.png in Resources */ = {isa = PBXBuildFile; fileRef = CE7AC71515D1045D0093B16A /* Icon-Small-50.png */; };
@@ -77,6 +80,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CE1B0A8815DCC5EA00CE694F /* 000.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 000.png; sourceTree = "<group>"; };
+		CE1B0A8A15DCC5F000CE694F /* 003.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 003.png; sourceTree = "<group>"; };
 		CE77F8AB15C77B84003EB900 /* jiance.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = jiance.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE77F8AF15C77B84003EB900 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		CE77F8B115C77B84003EB900 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -92,6 +97,7 @@
 		CE77F8C715C77B84003EB900 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		CE77F8C815C77B84003EB900 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		CE77F8D315C7817C003EB900 /* areabtn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = areabtn.png; sourceTree = "<group>"; };
+		CE79BC0F15DBAAC6008EA2C4 /* jingbao.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = jingbao.png; sourceTree = "<group>"; };
 		CE7AC71015D0F69E0093B16A /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		CE7AC71115D0F69E0093B16A /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		CE7AC71415D1045D0093B16A /* Icon-Small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small.png"; sourceTree = "<group>"; };
@@ -297,6 +303,9 @@
 		CE77F8D515C78186003EB900 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				CE1B0A8A15DCC5F000CE694F /* 003.png */,
+				CE79BC0F15DBAAC6008EA2C4 /* jingbao.png */,
+				CE1B0A8815DCC5EA00CE694F /* 000.png */,
 				CE7AC71415D1045D0093B16A /* Icon-Small.png */,
 				CE7AC71515D1045D0093B16A /* Icon-Small-50.png */,
 				CE7AC71615D1045D0093B16A /* Icon-Small@2x.png */,
@@ -469,6 +478,9 @@
 				CE7AC71D15D1045D0093B16A /* icon-72.png in Resources */,
 				CE7AC71E15D1045D0093B16A /* icon.png in Resources */,
 				CE7AC71F15D1045D0093B16A /* icon@2x.png in Resources */,
+				CE79BC1015DBAAC6008EA2C4 /* jingbao.png in Resources */,
+				CE1B0A8915DCC5EA00CE694F /* 000.png in Resources */,
+				CE1B0A8B15DCC5F000CE694F /* 003.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -627,8 +639,10 @@
 				GCC_PREFIX_HEADER = "jiance/jiance-Prefix.pch";
 				HEADER_SEARCH_PATHS = "$(SDKROOT)/usr/include/libxml2";
 				INFOPLIST_FILE = "jiance/jiance-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				LIBRARY_SEARCH_PATHS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -641,8 +655,10 @@
 				GCC_PREFIX_HEADER = "jiance/jiance-Prefix.pch";
 				HEADER_SEARCH_PATHS = "$(SDKROOT)/usr/include/libxml2";
 				INFOPLIST_FILE = "jiance/jiance-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				LIBRARY_SEARCH_PATHS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

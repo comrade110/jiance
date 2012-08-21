@@ -74,7 +74,7 @@
         
         NSString *alldisk = [NSString stringWithFormat:@"%dG",[[tempDic objectForKey:@"alldisk"] intValue]/1048576];
         
-        cpu.text = [NSString stringWithFormat:@"%d%%",[[tempDic objectForKey:@"cpu"] floatValue]*100]; 
+        cpu.text = [NSString stringWithFormat:@"%.1f%%",[[tempDic objectForKey:@"cpu"] floatValue]]; 
         
         usemen.text = [NSString stringWithFormat:@"%.1fMB/%@",(float)[[tempDic objectForKey:@"usemen"] intValue]/1024,allmen]; 
         

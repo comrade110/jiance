@@ -55,7 +55,7 @@
     }
     NSString *result = (NSString*)value;
     
-    NSLog(@"%@",result);
+    NSLog(@"haha%@",result);
     
      CXMLDocument *document = [[CXMLDocument alloc] initWithXMLString:result options:0 error:nil];
     
@@ -107,13 +107,58 @@
     } 
     
     UILabel *provinceL = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, cell.frame.size.width*0.6, cell.frame.size.height*0.6)];
+    UILabel *hotelL = [[UILabel alloc] initWithFrame:CGRectMake(cell.frame.size.width*0.5, 10, cell.frame.size.width*0.35, cell.frame.size.height*0.6)];
+    UILabel *alertL = [[UILabel alloc] initWithFrame:CGRectMake(cell.frame.size.width*0.9, 5, 40, cell.frame.size.height*0.8)];
     NSDictionary *tempDic = [pArr objectAtIndex:indexPath.row];
     
-    tempDic = [tempDic objectForKey:@"province"];
+    NSDictionary *tempDic2 = [tempDic objectForKey:@"province"];
     
-    provinceL.text = [tempDic objectForKey:@"name"];
+    NSLog(@"%@~~~~",tempDic);
+    
+    int alertnum = 0;
+
+    if ([[tempDic objectForKey:@"hotel"] isKindOfClass:[NSArray class]] ) {
+
+        NSArray* tempArr = [tempDic objectForKey:@"hotel"];
+        
+        hotelL.text = [NSString stringWithFormat:@"共有%d家酒店",[tempArr count]];
+        for (int i =0; i<[tempArr count]; i++) {
+            if ([[[tempArr objectAtIndex:i] objectForKey:@"alert"] boolValue]) {
+                alertnum ++;
+            }
+        }
+
+        
+    }else {
+        hotelL.text = @"共有1家酒店";
+       if ([[[tempDic objectForKey:@"hotel"] objectForKey:@"alert"] boolValue]) {
+           alertnum = 1;
+       }
+    }
+    
+    
+    hotelL.textAlignment = UITextAlignmentRight;
+    hotelL.font = [UIFont systemFontOfSize:14];
+    
+    
+    
+    
+    
+    provinceL.text = [tempDic2 objectForKey:@"name"];
+    if (alertnum >0) {
+        
+        UIImageView *imgview = [[UIImageView alloc] initWithFrame:CGRectMake(cell.frame.size.width*0.92, 15, 16, 16)];
+        imgview.image = [UIImage imageNamed:@"jingbao.png"];
+        
+        alertL.text = [NSString stringWithFormat:@"%d",alertnum];
+        alertL.font = [UIFont systemFontOfSize:12];
+        alertL.textColor = [UIColor redColor];
+        [cell.contentView addSubview:alertL];
+        [cell.contentView addSubview:imgview];
+    }
     
     [cell.contentView addSubview:provinceL];
+    [cell.contentView addSubview:hotelL];
     
     return cell;
 }
@@ -177,7 +222,16 @@
     
         ViewController *viewController = [sb instantiateViewControllerWithIdentifier:@"ViewController"];
         
-        viewController.hotelArr = tempArr;
+        
+        if ([[tempDic objectForKey:@"hotel"] isKindOfClass:[NSArray class]] ){
+            
+            viewController.hotelArr = tempArr;
+    
+        }else {
+            NSMutableArray *ta = [NSMutableArray array];
+            [ta addObject:tempArr];
+            viewController.hotelArr = ta;
+        }
         // ...
         // Pass the selected object to the new view controller.
         [self.navigationController pushViewController:viewController animated:YES];

@@ -13,7 +13,7 @@
 
 @implementation ViewController
 
-@synthesize mTableView,hotelArr;
+@synthesize mTableView,hotelArr,hotelDic;
 
 
 
@@ -54,8 +54,10 @@
     if ([hotelArr count] == 0) {
             return 1;
     }else {
+       
+            
+            return [hotelArr count];
         
-        return [hotelArr count];
     }
 }
 
@@ -77,7 +79,9 @@
     
     hotelName = [[UILabel alloc] initWithFrame:CGRectMake(screenFrame.size.width*0.05, 6, 220, 20)];
     
-    NSDictionary *tempDic = [hotelArr objectAtIndex:indexPath.row];
+    NSDictionary *tempDic =[hotelArr objectAtIndex:indexPath.row];
+   
+    
     
     hotelName.text = [tempDic objectForKey:@"name"];
     
@@ -176,9 +180,14 @@
         sb =[UIStoryboard storyboardWithName:@"MainStoryboard_iPhone"
                                                     bundle:nil];
     }
-    NSDictionary *tempDic = [hotelArr objectAtIndex:indexPath.row];
     
-    NSString *hidStr = [tempDic objectForKey:@"hid"];
+     NSString *hidStr;
+    
+    NSDictionary *tempDic = [hotelArr objectAtIndex:indexPath.row];
+    hidStr = [tempDic objectForKey:@"hid"];
+    
+    
+   
     
     
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];

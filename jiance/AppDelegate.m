@@ -88,7 +88,7 @@
 {
     [[NSNotificationCenter defaultCenter] addObserver: self selector: @selector(reachabilityChanged:) name: kReachabilityChangedNotification object: nil];
     
-	hostReach = [Reachability reachabilityWithHostName: @"http://192.168.3.104/"];
+	hostReach = [Reachability reachabilityWithHostName: @"http://221.133.240.53"];
 	[hostReach startNotifier];
 	[self updateInterfaceWithReachability: hostReach];
 	

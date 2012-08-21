@@ -13,10 +13,13 @@
     IBOutlet UITableView *mTableView;
     UILabel *hotelName;
     NSArray *hotelArr;
+    NSDictionary *hotelDic;
     UILabel *sd;
 }
 
 @property (nonatomic, strong) IBOutlet UITableView *mTableView;
 @property (nonatomic, strong) NSArray *hotelArr;
+
+@property (nonatomic, strong) NSDictionary *hotelDic;
 
 @end

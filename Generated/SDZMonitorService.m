@@ -17,7 +17,8 @@
 	{
 		if(self = [super init])
 		{
-			self.serviceUrl = @"http://192.168.3.104/HCServer/services/MonitorService";
+			self.serviceUrl = @"http://221.133.240.53/HCServer/services/MonitorService";
+//            self.serviceUrl = @"http://192.168.3.104/HCServer/services/MonitorService";
 			self.namespace = @"http://soap.monitor/";
 			self.headers = nil;
 			self.logging = NO;

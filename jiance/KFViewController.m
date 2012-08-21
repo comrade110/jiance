@@ -11,6 +11,7 @@
 
 @implementation KFViewController
 
+@synthesize tView;
 @synthesize roomInfo, startBtn, endBtn, searchBtn, resetBtn, startTime,endTime;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -28,6 +29,10 @@
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     
     hid = [userDefaults objectForKey:@"hid"];
+    
+    tView.delegate = self;
+    
+    tView.dataSource = self;
     
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [[ClientClass sharedService] getRooms:self action:@selector(getRoomsHandler:) hotelid:[hid intValue]];
@@ -57,6 +62,8 @@
 
 }
 
+
+
 -(void)getRoomsHandler:(id)value{
     
     if ([value isKindOfClass:[NSError class]]) {
@@ -74,7 +81,7 @@
     
     SOAPXMlParse *sxp = [[SOAPXMlParse alloc] init];
     
-    NSArray* tempArr = [sxp parseDire2:document nodeName:@"//room"];
+    tempArr = [sxp parseDire2:document nodeName:@"//room"];
     
     NSString *allstr = @"";
     
@@ -103,10 +110,11 @@
         allstr = [NSString stringWithFormat:@"%@\nMAC:%@  房间号:%@  开机时间:%@  关机时间:%@\n",allstr,mac,roomno,begintime,endtime];
         
 //        allstr = [NSString stringWithFormat:@"%@\n%@  %@  %@  %@\n",allstr,mac,roomno,begintime,endtime];
-        
     }
    [MBProgressHUD hideHUDForView:self.view animated:YES];    
     roomInfo.text = allstr;
+    
+    [tView reloadData];
 }
 
 
@@ -206,10 +214,12 @@
     
     startTime.text = nil;
     endTime.text = nil;
+    tView.hidden = NO;
 }
 
 -(IBAction)searchKFData:(id)sender{
     
+    tView.hidden = YES;
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [[ClientClass sharedService] getHistoryRooms:self action:@selector(getHistoryRoomsHandler:) hotelid:[hid intValue] mac:nil sbegin:startTime.text send:endTime.text start:0 limit:30];
 
@@ -232,18 +242,18 @@
     
     SOAPXMlParse *sxp = [[SOAPXMlParse alloc] init];
     
-    NSArray* tempArr = [sxp parseDire2:document nodeName:@"//roomlog"];
+    NSArray* tempArr2 = [sxp parseDire2:document nodeName:@"//roomlog"];
     
     
     NSString *allstr = @"";
-    if ([tempArr count] == 0) {
+    if ([tempArr2 count] == 0) {
          [MBProgressHUD hideHUDForView:self.view animated:YES];
         allstr = @"暂无数据";        
         roomInfo.text = allstr;
         return;
     }
-    for (int i = 0; i < [tempArr count]; i++) {
-        NSDictionary *tempDic = [[tempArr objectAtIndex:i] objectForKey:@"roomlog"];
+    for (int i = 0; i < [tempArr2 count]; i++) {
+        NSDictionary *tempDic = [[tempArr2 objectAtIndex:i] objectForKey:@"roomlog"];
         NSString *mac = [[tempDic objectForKey:@"mac"] uppercaseString];
         NSString *roomno = [tempDic objectForKey:@"roomno"];
         NSString *begintime = [tempDic objectForKey:@"begintime"];
@@ -266,6 +276,79 @@
     [MBProgressHUD hideHUDForView:self.view animated:YES];
     roomInfo.text = allstr;
 
+}
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    // Return the number of sections.
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    // Return the number of rows in the section.
+    return [tempArr count];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *CellIdentifier = @"Cell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        
+    } else{ 
+        NSArray *subviews = [[NSArray alloc] initWithArray:cell.contentView.subviews]; 
+        for (UIView *subview in subviews) { 
+            [subview removeFromSuperview]; 
+        } 
+    } 
+    
+//    UILabel *macL = [[UILabel alloc] initWithFrame:CGRectMake(10, 3, cell.frame.size.width*0.6, 20)];
+    
+    UILabel *roomnoL = [[UILabel alloc] initWithFrame:CGRectMake(65, 10, 120, 20)];
+    
+    UILabel *begintimeL = [[UILabel alloc] initWithFrame:CGRectMake(cell.frame.size.width*0.6, 3, cell.frame.size.width*0.38, 20)];
+    
+    UILabel *endtimeL = [[UILabel alloc] initWithFrame:CGRectMake(cell.frame.size.width*0.6, 24, cell.frame.size.width*0.38, 20)];
+    
+    UIImageView *endtimeV = [[UIImageView alloc] initWithFrame:CGRectMake(10, 5,36, 36)];
+    
+    NSDictionary *tempDic = [[tempArr objectAtIndex:indexPath.row] objectForKey:@"room"];
+    
+//    macL.text = [NSString stringWithFormat:@"MAC地址:%@",[[tempDic objectForKey:@"mac"] uppercaseString]];
+//    macL.font = [UIFont systemFontOfSize:12];
+    
+    roomnoL.text = [NSString stringWithFormat:@"房间号:%@",[tempDic objectForKey:@"roomno"]];
+    roomnoL.font = [UIFont systemFontOfSize:12];
+    roomnoL.textAlignment = UITextAlignmentLeft;
+    
+    begintimeL.text = [NSString stringWithFormat:@"开始时间:%@",[tempDic objectForKey:@"begintime"]];
+    begintimeL.font = [UIFont systemFontOfSize:10];
+    begintimeL.textColor = [UIColor grayColor];
+    begintimeL.textAlignment = UITextAlignmentRight;
+    
+    if ([tempDic objectForKey:@"endtime"] == nil) {
+        endtimeV.image = [UIImage imageNamed:@"003.png"];
+        endtimeL.text = @"使用中";
+        endtimeL.font = [UIFont systemFontOfSize:10];
+        endtimeL.textColor = [UIColor grayColor];
+    }else {
+        
+        endtimeV.image = [UIImage imageNamed:@"000.png"];
+        endtimeL.text = [NSString stringWithFormat:@"关机时间:%@",[tempDic objectForKey:@"endtime"]];
+        endtimeL.font = [UIFont systemFontOfSize:10];
+        endtimeL.textColor = [UIColor grayColor];        
+    }
+    
+    endtimeL.textAlignment = UITextAlignmentRight;
+    
+//    [cell.contentView addSubview:macL];
+    [cell.contentView addSubview:roomnoL];
+    [cell.contentView addSubview:begintimeL];
+    [cell.contentView addSubview:endtimeV];
+    [cell.contentView addSubview:endtimeL];
+    
+    return cell;
 }
 
 

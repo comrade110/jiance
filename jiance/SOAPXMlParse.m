@@ -36,7 +36,7 @@
         }
         [object setValue:objectAttributes forKey:[node name]];
         // --------------------------------------------------------------------------------
-        
+
         // process to read elements of object ----------------------------------------
         NSUInteger j, countElements = [node childCount];
         
@@ -108,6 +108,54 @@
                         strValue=[[arAttr objectAtIndex:i] stringValue];
                         if(strName && strValue){
                             [elementDictionary2 setValue:strValue forKey:strName];
+                            NSUInteger p, countElements3 = [elementTWO childCount];
+                            CXMLNode *elementTHREE;
+                            NSMutableDictionary *elementDictionary3=nil;
+                            for (p=0; p<countElements3; p++)
+                            {
+                                elementTHREE=[elementTWO childAtIndex:p];
+                                
+                                elementDictionary3=[[NSMutableDictionary alloc] init];
+                                
+                                // process to read element attributes ----------------------------------
+                                if([elementTHREE isMemberOfClass:[CXMLElement class]]){
+                                    CXMLElement *element4=(CXMLElement*)elementTHREE;
+                                    arAttr=[element4 attributes];
+                                    countAttr=[arAttr count];
+                                    for (i=0; i<countAttr; i++) {
+                                        strName=[[arAttr objectAtIndex:i] name];
+                                        strValue=[[arAttr objectAtIndex:i] stringValue];
+                                        if(strName && strValue){
+                                            [elementDictionary3 setValue:strValue forKey:strName];
+                                        }
+                                    }
+                                }
+                                // --------------------------------------------------------------------
+                                
+                                // element value if available
+                                strValue=[elementTHREE stringValue];
+                                //            if(strValue){
+                                //                [elementDictionary setValue:strValue forKey:@"value"];
+                                //            }
+                                // ---------------------------------------------------------------------
+                                
+                                // check if object/dictionary exists for this key "name"
+                                strName=[elementTHREE name];
+                                if([object valueForKey:strName]){
+                                    if([[object valueForKey:strName] isKindOfClass:[NSMutableDictionary class]]){
+                                        NSMutableDictionary *d3=[[NSMutableDictionary alloc] initWithDictionary:[object valueForKey:strName]];
+                                        NSMutableArray *arOFSameElementName=[[NSMutableArray alloc] initWithObjects:d3,elementDictionary3,nil];
+                                        [object setValue:arOFSameElementName forKey:strName];
+                                        
+                                    } else {
+                                        NSMutableArray *arOFSameElementName=[object valueForKey:strName];
+                                        [arOFSameElementName addObject:elementDictionary3];
+                                    }
+                                } else {
+                                    [object setValue:elementDictionary3 forKey:strName];
+                                }
+                            }
+
                         }
                     }
                 }
@@ -124,8 +172,8 @@
                 strName=[elementTWO name];
                 if([object valueForKey:strName]){
                     if([[object valueForKey:strName] isKindOfClass:[NSMutableDictionary class]]){
-                        NSMutableDictionary *d=[[NSMutableDictionary alloc] initWithDictionary:[object valueForKey:strName]];
-                        NSMutableArray *arOFSameElementName=[[NSMutableArray alloc] initWithObjects:d,elementDictionary2,nil];
+                        NSMutableDictionary *d2=[[NSMutableDictionary alloc] initWithDictionary:[object valueForKey:strName]];
+                        NSMutableArray *arOFSameElementName=[[NSMutableArray alloc] initWithObjects:d2,elementDictionary2,nil];
                         [object setValue:arOFSameElementName forKey:strName];
                         
                     } else {
@@ -137,53 +185,6 @@
                 }
             }
             
-            NSUInteger p, countElements3 = [elementTWO childCount];
-            CXMLNode *elementTHREE;
-            NSMutableDictionary *elementDictionary3=nil;
-            for (p=0; p<countElements3; p++)
-            {
-                elementTHREE=[elementTWO childAtIndex:p];
-                
-                elementDictionary3=[[NSMutableDictionary alloc] init];
-                
-                // process to read element attributes ----------------------------------
-                if([elementTHREE isMemberOfClass:[CXMLElement class]]){
-                    CXMLElement *element4=(CXMLElement*)elementTHREE;
-                    arAttr=[element4 attributes];
-                    countAttr=[arAttr count];
-                    for (i=0; i<countAttr; i++) {
-                        strName=[[arAttr objectAtIndex:i] name];
-                        strValue=[[arAttr objectAtIndex:i] stringValue];
-                        if(strName && strValue){
-                            [elementDictionary3 setValue:strValue forKey:strName];
-                        }
-                    }
-                }
-                // --------------------------------------------------------------------
-                
-                // element value if available
-                strValue=[elementTHREE stringValue];
-                //            if(strValue){
-                //                [elementDictionary setValue:strValue forKey:@"value"];
-                //            }
-                // ---------------------------------------------------------------------
-                
-                // check if object/dictionary exists for this key "name"
-                strName=[elementTHREE name];
-                if([object valueForKey:strName]){
-                    if([[object valueForKey:strName] isKindOfClass:[NSMutableDictionary class]]){
-                        NSMutableDictionary *d3=[[NSMutableDictionary alloc] initWithDictionary:[object valueForKey:strName]];
-                        NSMutableArray *arOFSameElementName=[[NSMutableArray alloc] initWithObjects:d3,elementDictionary3,nil];
-                        [object setValue:arOFSameElementName forKey:strName];
-                        
-                    } else {
-                        NSMutableArray *arOFSameElementName=[object valueForKey:strName];
-                        [arOFSameElementName addObject:elementDictionary3];
-                    }
-                } else {
-                    [object setValue:elementDictionary3 forKey:strName];
-                }
-            }
 
             
 

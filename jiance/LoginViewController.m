@@ -55,27 +55,38 @@
     
     SOAPXMlParse *sxp = [[SOAPXMlParse alloc] init];
     
-    [sxp parseDire2:document nodeName:@"//root"];
+    NSArray *tempArr = [sxp parseDire2:document nodeName:@"//root"];
     
-//    NSDictionary *tempDic = [tempArr objectAtIndex:0];
+    NSDictionary *tempDicF = [tempArr objectAtIndex:0];
     
+    NSDictionary *tempDic = [tempDicF objectForKey:@"root"];
+    
+    if ([tempDic objectForKey:@"sessionid"] != nil) {
+        
+        NSLog(@"%@",[tempDic objectForKey:@"sessionid"]);
+        [[iToast makeText:@"登录成功"] show];
+        UIStoryboard*  sb;
+        if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+            sb = [UIStoryboard storyboardWithName:@"MainStoryboard_iPad"
+                                           bundle:nil];
+        }else {
+            sb =[UIStoryboard storyboardWithName:@"MainStoryboard_iPhone"
+                                          bundle:nil];
+        }
+        
+        
+        AreaViewController *areaViewController = [sb instantiateViewControllerWithIdentifier:@"AreaViewController"];
+        // ...
+        // Pass the selected object to the new view controller.
+        [self.navigationController pushViewController:areaViewController animated:YES];
+    }
+    else {
+        
+        [[[iToast makeText:@"登录失败！"] setDuration:5000] show];
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+    }
+            
 
-            
-            [[iToast makeText:@"登录成功"] show];
-            UIStoryboard*  sb;
-            if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
-                sb = [UIStoryboard storyboardWithName:@"MainStoryboard_iPad"
-                                               bundle:nil];
-            }else {
-                sb =[UIStoryboard storyboardWithName:@"MainStoryboard_iPhone"
-                                              bundle:nil];
-            }
-            
-            
-            AreaViewController *areaViewController = [sb instantiateViewControllerWithIdentifier:@"AreaViewController"];
-            // ...
-            // Pass the selected object to the new view controller.
-            [self.navigationController pushViewController:areaViewController animated:YES];
 
 
 
@@ -104,6 +115,8 @@
     }
     
     NSString *result = (NSString*)value;
+    
+    NSLog(@"%@",result);
     CXMLDocument *document = [[CXMLDocument alloc] initWithXMLString:result options:0 error:nil];
     
     SOAPXMlParse *sxp = [[SOAPXMlParse alloc] init];
