@@ -62,15 +62,16 @@
     
     NSString *result = (NSString*)value;
     
-    
     CXMLDocument *document = [[CXMLDocument alloc] initWithXMLString:result options:0 error:nil];
     
     SOAPXMlParse *sxp = [[SOAPXMlParse alloc] init];
     
+    NSLog(@"breakpoint1");
     NSArray* tempArr = [sxp parseDire:document nodeName:@"//hotel"];
     
     NSDictionary *tempDic = [[tempArr objectAtIndex:0] objectForKey:@"hotel"];
-
+    
+    NSLog(@"breakpoint2");
     
     label1.text = [tempDic objectForKey:@"hid"];
     label2.text = [tempDic objectForKey:@"name"];
@@ -83,28 +84,60 @@
     label9.text = [tempDic objectForKey:@"homepage"];
     
     NSDictionary *tempDic2 = [[tempArr objectAtIndex:0] objectForKey:@"machine"];
-
     
-    label10.text = [tempDic2 objectForKey:@"name"];
-    label11.text = [tempDic2 objectForKey:@"vnc"];
-    label12.text = [tempDic2 objectForKey:@"os"];
-    if ([[tempDic2 objectForKey:@"os"] intValue] == 1) {
-        label12.text = @"Windows";
-    }else if ([[tempDic2 objectForKey:@"os"] intValue] == 2) {
-        label12.text = @"Linux";
+    if ([tempDic2 isKindOfClass:[NSArray class]]) {
+        NSLog(@"dayu1");
+        tempDic2 = [(NSArray*)tempDic2 objectAtIndex:0];
     }
     
-    label13.text = [tempDic2 objectForKey:@"mem"];
-    label14.text = [tempDic2 objectForKey:@"mid"];
-    label15.text = [tempDic2 objectForKey:@"note"];
-    label16.text = [tempDic2 objectForKey:@"cpu"];
-    label17.text = [tempDic2 objectForKey:@"mac"];
+    NSLog(@"breakpoint3");
+    if (tempDic2 != nil) {
+        if ([tempDic2 objectForKey:@"name"] != nil) {
+            
+            label10.text = [tempDic2 objectForKey:@"name"];
+        }
+        if ([tempDic2 objectForKey:@"vnc"] != nil) {
+            
+            
+            label11.text = [tempDic2 objectForKey:@"vnc"];
+        }
+        label12.text = [tempDic2 objectForKey:@"os"];
+        if ([[tempDic2 objectForKey:@"os"] intValue] == 1) {
+            label12.text = @"Windows";
+        }else if ([[tempDic2 objectForKey:@"os"] intValue] == 2) {
+            label12.text = @"Linux";
+        }
+        if ([tempDic2 objectForKey:@"mem"] != nil) {
+            
+            label13.text = [tempDic2 objectForKey:@"mem"];
+        }
+        if ([tempDic2 objectForKey:@"mid"] != nil) {
+            
+            label14.text = [tempDic2 objectForKey:@"mid"];
+        }
+        if ([tempDic2 objectForKey:@"note"] != nil) {
+            
+            label15.text = [tempDic2 objectForKey:@"note"];
+        }
+        if ([tempDic2 objectForKey:@"cpu"] != nil) {
+            
+            label16.text = [tempDic2 objectForKey:@"cpu"];
+        }
+        if ([tempDic2 objectForKey:@"mac"] != nil) {
+            
+            label17.text = [tempDic2 objectForKey:@"mac"];
+        }
+
+    }
     
     NSString *clText = @"";
+    
+    NSLog(@"breakpoint4");
     
     if ([[[tempArr objectAtIndex:0] objectForKey:@"alert"] isKindOfClass:[NSArray class]] ){
     
         
+        NSLog(@"breakpoint5");
         NSArray *tempArr3 = [[tempArr objectAtIndex:0] objectForKey:@"alert"];
         for (int i = 0; i<[tempArr3 count]; i++) {
             NSDictionary *tempDic3 = [tempArr3 objectAtIndex:i];
@@ -120,6 +153,8 @@
             
         }
     }else {
+        
+        NSLog(@"breakpoint6");
         NSDictionary *tempD = [[tempArr objectAtIndex:0] objectForKey:@"alert"];
         NSString *alertid = [tempD objectForKey:@"alertid"];
         NSString *name = [tempD objectForKey:@"name"];

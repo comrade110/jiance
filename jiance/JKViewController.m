@@ -26,6 +26,8 @@
 {
     [super viewDidLoad];
     
+    NSLog(@"enter\n");
+    
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     
     mid = [userDefaults objectForKey:@"mid"];

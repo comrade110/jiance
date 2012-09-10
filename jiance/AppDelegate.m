@@ -23,7 +23,7 @@
     {
         case NotReachable:
         {
-            statusString = @"检测不到网络";
+            statusString = @"检测不到WiFi网络";
 
             connectionRequired= NO;  
             
