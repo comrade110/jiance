@@ -18,6 +18,8 @@
     
     IBOutlet UIButton *loginBtn;
     
+    UIImageView *bgImageView;
+    
 
 }
 @property(nonatomic, strong) IBOutlet UITextField *userField;

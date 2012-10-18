@@ -29,6 +29,9 @@
 {
     [super viewDidLoad];
     
+    
+    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"lobg.png"]]];
+    
     userField.delegate = self;
     
     pwField.delegate = self;

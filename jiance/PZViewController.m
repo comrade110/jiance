@@ -7,6 +7,7 @@
 //
 
 #import "PZViewController.h"
+#import "iToast.h"
 
 
 @implementation PZViewController
@@ -67,6 +68,10 @@
     SOAPXMlParse *sxp = [[SOAPXMlParse alloc] init];
     
     NSLog(@"breakpoint1");
+    if (result == nil) {
+        [[iToast makeText:@"无数据"] show];
+        return;
+    }
     NSArray* tempArr = [sxp parseDire:document nodeName:@"//hotel"];
     
     NSDictionary *tempDic = [[tempArr objectAtIndex:0] objectForKey:@"hotel"];

@@ -125,7 +125,6 @@
     [cell.contentView addSubview:stateLabel];
     [cell.contentView addSubview:activeroom];
     // Configure the cell...
-    
     return cell;
 }
 

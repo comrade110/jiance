@@ -98,6 +98,7 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+         cell.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"tb_bg.png"]]; 
         
     } else{ 
         NSArray *subviews = [[NSArray alloc] initWithArray:cell.contentView.subviews]; 
@@ -140,11 +141,13 @@
     hotelL.textAlignment = UITextAlignmentRight;
     hotelL.font = [UIFont systemFontOfSize:14];
     
-    
+    hotelL.backgroundColor = [UIColor clearColor];
     
     
     
     provinceL.text = [tempDic2 objectForKey:@"name"];
+    
+    provinceL.backgroundColor = [UIColor clearColor];
     if (alertnum >0) {
         
         UIImageView *imgview = [[UIImageView alloc] initWithFrame:CGRectMake(cell.frame.size.width*0.92, 15, 16, 16)];
@@ -153,12 +156,15 @@
         alertL.text = [NSString stringWithFormat:@"%d",alertnum];
         alertL.font = [UIFont systemFontOfSize:12];
         alertL.textColor = [UIColor redColor];
+        alertL.backgroundColor =  [UIColor clearColor];
         [cell.contentView addSubview:alertL];
         [cell.contentView addSubview:imgview];
     }
     
     [cell.contentView addSubview:provinceL];
     [cell.contentView addSubview:hotelL];
+    
+    
     
     return cell;
 }

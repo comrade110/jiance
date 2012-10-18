@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		CE1B0A8915DCC5EA00CE694F /* 000.png in Resources */ = {isa = PBXBuildFile; fileRef = CE1B0A8815DCC5EA00CE694F /* 000.png */; };
 		CE1B0A8B15DCC5F000CE694F /* 003.png in Resources */ = {isa = PBXBuildFile; fileRef = CE1B0A8A15DCC5F000CE694F /* 003.png */; };
+		CE732B1916018E330040BD3A /* lobg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CE732B1816018E330040BD3A /* lobg@2x.png */; };
+		CE732B1C16019F500040BD3A /* lobg.png in Resources */ = {isa = PBXBuildFile; fileRef = CE732B1B16019F500040BD3A /* lobg.png */; };
 		CE77F8B015C77B84003EB900 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE77F8AF15C77B84003EB900 /* UIKit.framework */; };
 		CE77F8B215C77B84003EB900 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE77F8B115C77B84003EB900 /* Foundation.framework */; };
 		CE77F8B415C77B84003EB900 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE77F8B315C77B84003EB900 /* CoreGraphics.framework */; };
@@ -19,6 +21,17 @@
 		CE77F8C615C77B84003EB900 /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE77F8C415C77B84003EB900 /* MainStoryboard_iPad.storyboard */; };
 		CE77F8C915C77B84003EB900 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE77F8C815C77B84003EB900 /* ViewController.m */; };
 		CE77F8D415C7817C003EB900 /* areabtn.png in Resources */ = {isa = PBXBuildFile; fileRef = CE77F8D315C7817C003EB900 /* areabtn.png */; };
+		CE794656162E8E4300EFED17 /* hotelOfflineRoom4.png in Resources */ = {isa = PBXBuildFile; fileRef = CE79464E162E8E4300EFED17 /* hotelOfflineRoom4.png */; };
+		CE794657162E8E4300EFED17 /* hotelActiveRoom0.png in Resources */ = {isa = PBXBuildFile; fileRef = CE79464F162E8E4300EFED17 /* hotelActiveRoom0.png */; };
+		CE794658162E8E4300EFED17 /* hotelOfflineRoom0.png in Resources */ = {isa = PBXBuildFile; fileRef = CE794650162E8E4300EFED17 /* hotelOfflineRoom0.png */; };
+		CE794659162E8E4300EFED17 /* hotelActiveRoom4.png in Resources */ = {isa = PBXBuildFile; fileRef = CE794651162E8E4300EFED17 /* hotelActiveRoom4.png */; };
+		CE79465A162E8E4300EFED17 /* hotelActiveRoom3.png in Resources */ = {isa = PBXBuildFile; fileRef = CE794652162E8E4300EFED17 /* hotelActiveRoom3.png */; };
+		CE79465B162E8E4300EFED17 /* hotelOfflineRoom3.png in Resources */ = {isa = PBXBuildFile; fileRef = CE794653162E8E4300EFED17 /* hotelOfflineRoom3.png */; };
+		CE79465C162E8E4300EFED17 /* hotelOfflineRoom2.png in Resources */ = {isa = PBXBuildFile; fileRef = CE794654162E8E4300EFED17 /* hotelOfflineRoom2.png */; };
+		CE79465D162E8E4300EFED17 /* hotelActiveRoom2.png in Resources */ = {isa = PBXBuildFile; fileRef = CE794655162E8E4300EFED17 /* hotelActiveRoom2.png */; };
+		CE794660162E930800EFED17 /* hotelActiveRoom1.png in Resources */ = {isa = PBXBuildFile; fileRef = CE79465F162E930800EFED17 /* hotelActiveRoom1.png */; };
+		CE794662162E931000EFED17 /* hotelOfflineRoom1.png in Resources */ = {isa = PBXBuildFile; fileRef = CE794661162E931000EFED17 /* hotelOfflineRoom1.png */; };
+		CE794665162EA94A00EFED17 /* KFDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE794664162EA94900EFED17 /* KFDetailViewController.m */; };
 		CE79BC1015DBAAC6008EA2C4 /* jingbao.png in Resources */ = {isa = PBXBuildFile; fileRef = CE79BC0F15DBAAC6008EA2C4 /* jingbao.png */; };
 		CE7AC71215D0F69E0093B16A /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = CE7AC71115D0F69E0093B16A /* MBProgressHUD.m */; };
 		CE7AC71A15D1045D0093B16A /* Icon-Small.png in Resources */ = {isa = PBXBuildFile; fileRef = CE7AC71415D1045D0093B16A /* Icon-Small.png */; };
@@ -36,6 +49,8 @@
 		CE7D99CB15CBB67A000F1D55 /* 03.png in Resources */ = {isa = PBXBuildFile; fileRef = CE7D99C715CBB67A000F1D55 /* 03.png */; };
 		CE7D99CC15CBB67A000F1D55 /* 01.png in Resources */ = {isa = PBXBuildFile; fileRef = CE7D99C815CBB67A000F1D55 /* 01.png */; };
 		CE7D99CD15CBB67A000F1D55 /* 02.png in Resources */ = {isa = PBXBuildFile; fileRef = CE7D99C915CBB67A000F1D55 /* 02.png */; };
+		CE7DFF1B1611748E0034E262 /* UITableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE7DFF1A1611748E0034E262 /* UITableViewCell.m */; };
+		CE7DFF2816117E090034E262 /* tb_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = CE7DFF2716117E090034E262 /* tb_bg.png */; };
 		CEDD74BF15C7A0A600F2BB80 /* JCTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEDD74BE15C7A0A600F2BB80 /* JCTabBarController.m */; };
 		CEDD74C715C7B42B00F2BB80 /* glyphish-icons.png in Resources */ = {isa = PBXBuildFile; fileRef = CEDD74C615C7B42B00F2BB80 /* glyphish-icons.png */; };
 		CEDD74CB15C7B50200F2BB80 /* glyphish-icons2.png in Resources */ = {isa = PBXBuildFile; fileRef = CEDD74CA15C7B50200F2BB80 /* glyphish-icons2.png */; };
@@ -82,6 +97,8 @@
 /* Begin PBXFileReference section */
 		CE1B0A8815DCC5EA00CE694F /* 000.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 000.png; sourceTree = "<group>"; };
 		CE1B0A8A15DCC5F000CE694F /* 003.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 003.png; sourceTree = "<group>"; };
+		CE732B1816018E330040BD3A /* lobg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lobg@2x.png"; sourceTree = "<group>"; };
+		CE732B1B16019F500040BD3A /* lobg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lobg.png; sourceTree = "<group>"; };
 		CE77F8AB15C77B84003EB900 /* jiance.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = jiance.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE77F8AF15C77B84003EB900 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		CE77F8B115C77B84003EB900 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -97,6 +114,18 @@
 		CE77F8C715C77B84003EB900 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		CE77F8C815C77B84003EB900 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		CE77F8D315C7817C003EB900 /* areabtn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = areabtn.png; sourceTree = "<group>"; };
+		CE79464E162E8E4300EFED17 /* hotelOfflineRoom4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hotelOfflineRoom4.png; sourceTree = "<group>"; };
+		CE79464F162E8E4300EFED17 /* hotelActiveRoom0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hotelActiveRoom0.png; sourceTree = "<group>"; };
+		CE794650162E8E4300EFED17 /* hotelOfflineRoom0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hotelOfflineRoom0.png; sourceTree = "<group>"; };
+		CE794651162E8E4300EFED17 /* hotelActiveRoom4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hotelActiveRoom4.png; sourceTree = "<group>"; };
+		CE794652162E8E4300EFED17 /* hotelActiveRoom3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hotelActiveRoom3.png; sourceTree = "<group>"; };
+		CE794653162E8E4300EFED17 /* hotelOfflineRoom3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hotelOfflineRoom3.png; sourceTree = "<group>"; };
+		CE794654162E8E4300EFED17 /* hotelOfflineRoom2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hotelOfflineRoom2.png; sourceTree = "<group>"; };
+		CE794655162E8E4300EFED17 /* hotelActiveRoom2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hotelActiveRoom2.png; sourceTree = "<group>"; };
+		CE79465F162E930800EFED17 /* hotelActiveRoom1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hotelActiveRoom1.png; sourceTree = "<group>"; };
+		CE794661162E931000EFED17 /* hotelOfflineRoom1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hotelOfflineRoom1.png; sourceTree = "<group>"; };
+		CE794663162EA94900EFED17 /* KFDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KFDetailViewController.h; sourceTree = "<group>"; };
+		CE794664162EA94900EFED17 /* KFDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KFDetailViewController.m; sourceTree = "<group>"; };
 		CE79BC0F15DBAAC6008EA2C4 /* jingbao.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = jingbao.png; sourceTree = "<group>"; };
 		CE7AC71015D0F69E0093B16A /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		CE7AC71115D0F69E0093B16A /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
@@ -120,6 +149,9 @@
 		CE7D99C715CBB67A000F1D55 /* 03.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 03.png; sourceTree = "<group>"; };
 		CE7D99C815CBB67A000F1D55 /* 01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 01.png; sourceTree = "<group>"; };
 		CE7D99C915CBB67A000F1D55 /* 02.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 02.png; sourceTree = "<group>"; };
+		CE7DFF191611748E0034E262 /* UITableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UITableViewCell.h; sourceTree = "<group>"; };
+		CE7DFF1A1611748E0034E262 /* UITableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UITableViewCell.m; sourceTree = "<group>"; };
+		CE7DFF2716117E090034E262 /* tb_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tb_bg.png; sourceTree = "<group>"; };
 		CEDD74BD15C7A0A600F2BB80 /* JCTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JCTabBarController.h; sourceTree = "<group>"; };
 		CEDD74BE15C7A0A600F2BB80 /* JCTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JCTabBarController.m; sourceTree = "<group>"; };
 		CEDD74C615C7B42B00F2BB80 /* glyphish-icons.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "glyphish-icons.png"; sourceTree = "<group>"; };
@@ -278,8 +310,12 @@
 				CE7D99B315CB7C3A000F1D55 /* JKViewController.m */,
 				CE7D99B515CB7C5C000F1D55 /* KFViewController.h */,
 				CE7D99B615CB7C5C000F1D55 /* KFViewController.m */,
+				CE794663162EA94900EFED17 /* KFDetailViewController.h */,
+				CE794664162EA94900EFED17 /* KFDetailViewController.m */,
 				CE7D99B815CB7C79000F1D55 /* JBViewController.h */,
 				CE7D99B915CB7C79000F1D55 /* JBViewController.m */,
+				CE7DFF191611748E0034E262 /* UITableViewCell.h */,
+				CE7DFF1A1611748E0034E262 /* UITableViewCell.m */,
 				CEFF0EFC15C8D18E000862C2 /* Generated */,
 				CEFF0F0315C8D18E000862C2 /* Soap */,
 				CEFF0F1F15C8D18E000862C2 /* TouchXML */,
@@ -303,7 +339,20 @@
 		CE77F8D515C78186003EB900 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				CE79464E162E8E4300EFED17 /* hotelOfflineRoom4.png */,
+				CE794661162E931000EFED17 /* hotelOfflineRoom1.png */,
+				CE79465F162E930800EFED17 /* hotelActiveRoom1.png */,
+				CE79464F162E8E4300EFED17 /* hotelActiveRoom0.png */,
+				CE794650162E8E4300EFED17 /* hotelOfflineRoom0.png */,
+				CE794651162E8E4300EFED17 /* hotelActiveRoom4.png */,
+				CE794652162E8E4300EFED17 /* hotelActiveRoom3.png */,
+				CE794653162E8E4300EFED17 /* hotelOfflineRoom3.png */,
+				CE794654162E8E4300EFED17 /* hotelOfflineRoom2.png */,
+				CE794655162E8E4300EFED17 /* hotelActiveRoom2.png */,
+				CE732B1B16019F500040BD3A /* lobg.png */,
+				CE732B1816018E330040BD3A /* lobg@2x.png */,
 				CE1B0A8A15DCC5F000CE694F /* 003.png */,
+				CE7DFF2716117E090034E262 /* tb_bg.png */,
 				CE79BC0F15DBAAC6008EA2C4 /* jingbao.png */,
 				CE1B0A8815DCC5EA00CE694F /* 000.png */,
 				CE7AC71415D1045D0093B16A /* Icon-Small.png */,
@@ -481,6 +530,19 @@
 				CE79BC1015DBAAC6008EA2C4 /* jingbao.png in Resources */,
 				CE1B0A8915DCC5EA00CE694F /* 000.png in Resources */,
 				CE1B0A8B15DCC5F000CE694F /* 003.png in Resources */,
+				CE732B1916018E330040BD3A /* lobg@2x.png in Resources */,
+				CE732B1C16019F500040BD3A /* lobg.png in Resources */,
+				CE7DFF2816117E090034E262 /* tb_bg.png in Resources */,
+				CE794656162E8E4300EFED17 /* hotelOfflineRoom4.png in Resources */,
+				CE794657162E8E4300EFED17 /* hotelActiveRoom0.png in Resources */,
+				CE794658162E8E4300EFED17 /* hotelOfflineRoom0.png in Resources */,
+				CE794659162E8E4300EFED17 /* hotelActiveRoom4.png in Resources */,
+				CE79465A162E8E4300EFED17 /* hotelActiveRoom3.png in Resources */,
+				CE79465B162E8E4300EFED17 /* hotelOfflineRoom3.png in Resources */,
+				CE79465C162E8E4300EFED17 /* hotelOfflineRoom2.png in Resources */,
+				CE79465D162E8E4300EFED17 /* hotelActiveRoom2.png in Resources */,
+				CE794660162E930800EFED17 /* hotelActiveRoom1.png in Resources */,
+				CE794662162E931000EFED17 /* hotelOfflineRoom1.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -551,6 +613,8 @@
 				CE7D99BA15CB7C79000F1D55 /* JBViewController.m in Sources */,
 				CE7AC71215D0F69E0093B16A /* MBProgressHUD.m in Sources */,
 				CE7AC72915D10FC80093B16A /* Reachability.m in Sources */,
+				CE7DFF1B1611748E0034E262 /* UITableViewCell.m in Sources */,
+				CE794665162EA94A00EFED17 /* KFDetailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

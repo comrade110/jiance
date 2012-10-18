@@ -10,6 +10,7 @@
 #import "ClientClass.h"
 #import "SOAPXMlParse.h"
 #import "MBProgressHUD.h"
+#import "UITableViewCell.h"
 
 @interface AreaViewController : UITableViewController{
     

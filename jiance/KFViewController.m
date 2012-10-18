@@ -7,6 +7,7 @@
 //
 
 #import "KFViewController.h"
+#import "KFDetailViewController.h"
 
 
 @implementation KFViewController
@@ -81,7 +82,9 @@
     
     SOAPXMlParse *sxp = [[SOAPXMlParse alloc] init];
     
-    tempArr = [sxp parseDire2:document nodeName:@"//room"];
+    tempArr = [sxp parseDire:document nodeName:@"//room"];
+    
+    NSLog(@"kf %@",tempArr);
     
     NSString *allstr = @"";
     
@@ -93,26 +96,26 @@
     }
     for (int i = 0; i < [tempArr count]; i++) {
         NSDictionary *tempDic = [[tempArr objectAtIndex:i] objectForKey:@"room"];
-        NSString *mac = [[tempDic objectForKey:@"mac"] uppercaseString];
+//        NSString *mac = [[tempDic objectForKey:@"mac"] uppercaseString];
         NSString *roomno = [tempDic objectForKey:@"roomno"];
-        NSString *begintime = [tempDic objectForKey:@"begintime"];
-        NSString *endtime = [tempDic objectForKey:@"endtime"];
+//        NSString *begintime = [tempDic objectForKey:@"begintime"];
+//        NSString *endtime = [tempDic objectForKey:@"endtime"];
         if (roomno == nil || [roomno isEqualToString:@""]) {
             roomno =@"---";
         }
-        if (begintime == nil) {
-            begintime =@"00000000000000";
-        }
-        if (endtime == nil) {
-            endtime = @"      使用中";
-        }
+//        if (begintime == nil) {
+//            begintime =@"00000000000000";
+//        }
+//        if (endtime == nil) {
+//            endtime = @"      使用中";
+//        }
       
-        allstr = [NSString stringWithFormat:@"%@\nMAC:%@  房间号:%@  开机时间:%@  关机时间:%@\n",allstr,mac,roomno,begintime,endtime];
+//        allstr = [NSString stringWithFormat:@"%@\nMAC:%@  房间号:%@  开机时间:%@  关机时间:%@\n",allstr,mac,roomno,begintime,endtime];
         
 //        allstr = [NSString stringWithFormat:@"%@\n%@  %@  %@  %@\n",allstr,mac,roomno,begintime,endtime];
     }
    [MBProgressHUD hideHUDForView:self.view animated:YES];    
-    roomInfo.text = allstr;
+//    roomInfo.text = allstr;
     
     [tView reloadData];
 }
@@ -307,48 +310,93 @@
     
     UILabel *roomnoL = [[UILabel alloc] initWithFrame:CGRectMake(65, 10, 120, 20)];
     
-    UILabel *begintimeL = [[UILabel alloc] initWithFrame:CGRectMake(cell.frame.size.width*0.6, 3, cell.frame.size.width*0.38, 20)];
-    
-    UILabel *endtimeL = [[UILabel alloc] initWithFrame:CGRectMake(cell.frame.size.width*0.6, 24, cell.frame.size.width*0.38, 20)];
+//    UILabel *begintimeL = [[UILabel alloc] initWithFrame:CGRectMake(cell.frame.size.width*0.6, 3, cell.frame.size.width*0.38, 20)];
+//    
+//    UILabel *endtimeL = [[UILabel alloc] initWithFrame:CGRectMake(cell.frame.size.width*0.6, 24, cell.frame.size.width*0.38, 20)];
     
     UIImageView *endtimeV = [[UIImageView alloc] initWithFrame:CGRectMake(10, 5,36, 36)];
     
     NSDictionary *tempDic = [[tempArr objectAtIndex:indexPath.row] objectForKey:@"room"];
+
+    NSDictionary *tempDic2 = [[tempArr objectAtIndex:indexPath.row] objectForKey:@"machine"];
     
+    NSLog(@"TEST:%@",[tempArr objectAtIndex:indexPath.row]);
 //    macL.text = [NSString stringWithFormat:@"MAC地址:%@",[[tempDic objectForKey:@"mac"] uppercaseString]];
 //    macL.font = [UIFont systemFontOfSize:12];
     
     roomnoL.text = [NSString stringWithFormat:@"房间号:%@",[tempDic objectForKey:@"roomno"]];
     roomnoL.font = [UIFont systemFontOfSize:12];
     roomnoL.textAlignment = UITextAlignmentLeft;
-    
-    begintimeL.text = [NSString stringWithFormat:@"开始时间:%@",[tempDic objectForKey:@"begintime"]];
-    begintimeL.font = [UIFont systemFontOfSize:10];
-    begintimeL.textColor = [UIColor grayColor];
-    begintimeL.textAlignment = UITextAlignmentRight;
-    
-    if ([tempDic objectForKey:@"endtime"] == nil) {
-        endtimeV.image = [UIImage imageNamed:@"003.png"];
-        endtimeL.text = @"使用中";
-        endtimeL.font = [UIFont systemFontOfSize:10];
-        endtimeL.textColor = [UIColor grayColor];
+//    
+//    begintimeL.text = [NSString stringWithFormat:@"开始时间:%@",[tempDic objectForKey:@"begintime"]];
+//    begintimeL.font = [UIFont systemFontOfSize:10];
+//    begintimeL.textColor = [UIColor grayColor];
+//    begintimeL.textAlignment = UITextAlignmentRight;
+    int mType = 0;
+    NSString *endT;
+    NSLog(@"~~~%d~~~",[tempDic2 count]);
+    if ([tempDic2 count] <3) {
+      mType =[[[(NSArray*)tempDic2 objectAtIndex:0] objectForKey:@"type"] intValue];  
+      endT=[[(NSArray*)tempDic2 objectAtIndex:0] objectForKey:@"endtime"];  
+    }else if ([tempDic2 count] >4) {
+        mType =0;
+        endT= nil;
     }else {
         
-        endtimeV.image = [UIImage imageNamed:@"000.png"];
-        endtimeL.text = [NSString stringWithFormat:@"关机时间:%@",[tempDic objectForKey:@"endtime"]];
-        endtimeL.font = [UIFont systemFontOfSize:10];
-        endtimeL.textColor = [UIColor grayColor];        
+        mType = [[tempDic2 objectForKey:@"type"] intValue];
+        endT = [tempDic2 objectForKey:@"endtime"];
+    }
+    NSLog(@"=====%d====",mType);
+    if ( mType==1) {
+        if (endT == nil) {
+            endtimeV.image = [UIImage imageNamed:@"hotelActiveRoom1.png"];
+        }else {
+            endtimeV.image = [UIImage imageNamed:@"hotelOfflineRoom1.png"];
+        }
+    }else if (mType ==2 || mType ==3){
+        
+        if (endT == nil) {
+            endtimeV.image = [UIImage imageNamed:@"hotelActiveRoom4.png"];
+        }else {
+            endtimeV.image = [UIImage imageNamed:@"hotelOfflineRoom4.png"];
+        }      
+    }else if (mType ==4){
+        //  to be continue...
+    }else {
+        if (endT == nil) {
+            endtimeV.image = [UIImage imageNamed:@"hotelActiveRoom0.png"];
+        }else {
+            endtimeV.image = [UIImage imageNamed:@"hotelOfflineRoom0.png"];
+        }
     }
     
-    endtimeL.textAlignment = UITextAlignmentRight;
+    
+//    endtimeL.textAlignment = UITextAlignmentRight;
     
 //    [cell.contentView addSubview:macL];
     [cell.contentView addSubview:roomnoL];
-    [cell.contentView addSubview:begintimeL];
     [cell.contentView addSubview:endtimeV];
-    [cell.contentView addSubview:endtimeL];
     
     return cell;
+}
+
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+
+    
+    
+    KFDetailViewController *kfDetail = [[KFDetailViewController alloc] init];
+    
+    if ([[[tempArr objectAtIndex:indexPath.row] objectForKey:@"machine"] count] <3) {
+        kfDetail.kfarr = [[tempArr objectAtIndex:indexPath.row] objectForKey:@"machine"];
+        kfDetail.kftabcount = [[[tempArr objectAtIndex:indexPath.row] objectForKey:@"machine"] count];
+    }else {
+        kfDetail.kftabcount = 1;
+        kfDetail.kfdic = [[tempArr objectAtIndex:indexPath.row] objectForKey:@"machine"];
+    }
+    
+    [self.navigationController pushViewController:kfDetail animated:YES];
+
 }
 
 
