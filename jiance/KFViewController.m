@@ -320,7 +320,6 @@
 
     NSDictionary *tempDic2 = [[tempArr objectAtIndex:indexPath.row] objectForKey:@"machine"];
     
-    NSLog(@"TEST:%@",[tempArr objectAtIndex:indexPath.row]);
 //    macL.text = [NSString stringWithFormat:@"MAC地址:%@",[[tempDic objectForKey:@"mac"] uppercaseString]];
 //    macL.font = [UIFont systemFontOfSize:12];
     
@@ -342,9 +341,17 @@
         mType =0;
         endT= nil;
     }else {
-        
-        mType = [[tempDic2 objectForKey:@"type"] intValue];
-        endT = [tempDic2 objectForKey:@"endtime"];
+        NSLog(@"~~~~~~~~~~~~~~~~%@",tempDic2);
+        if ([[[tempArr objectAtIndex:indexPath.row] objectForKey:@"machine"] isKindOfClass:[NSMutableArray class]]) {
+            tempDic2 = [[[tempArr objectAtIndex:indexPath.row] objectForKey:@"machine"] objectAtIndex:0]; 
+            
+            mType = [[tempDic2 objectForKey:@"type"] intValue];
+            endT = [tempDic2 objectForKey:@"endtime"];
+        }else {
+            
+            mType = [[tempDic2 objectForKey:@"type"] intValue];
+            endT = [tempDic2 objectForKey:@"endtime"];
+        }
     }
     NSLog(@"=====%d====",mType);
     if ( mType==1) {
